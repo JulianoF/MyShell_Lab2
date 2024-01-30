@@ -4,11 +4,11 @@
 struct Command {
 	int id;
 	char name[20];
-	void (*functionptr)();
+	void (*functionptr)(char** args);
 };
 
-void pwd();
-void cd();
+void pwd(char** args);
+void cd(char** args);
 void clr();
 void dir();
 void environ();
@@ -16,7 +16,6 @@ void echo();
 void help();
 void more();
 void pause();
-void quit();
 
 void execute(struct Command* command, int params);
 

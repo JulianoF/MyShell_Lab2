@@ -1,13 +1,18 @@
 #include "utility.h"
+
+#include <string.h>
 #include <stdio.h>
 
 
-void pwd(){
+void pwd(char** args){
     printf("this will be pwd\n");
 }
 
-void cd(){
+void cd(char** args){
     printf("this will be cd\n");
+    for(int i = 0; args[i] != NULL; ++i){
+        printf(" %s \n",args[i]);
+    }
 }
 
 void clr(){
@@ -38,6 +43,3 @@ void pause(){
 
 }
 
-void quit(){
-
-}
