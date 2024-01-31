@@ -7,12 +7,12 @@ struct Command {
 	void (*functionptr)(char** args);
 };
 
-void pwd(char** args);
+void pwd();
 void cd(char** args);
 void clr();
-void dir();
+void dir(char** args);
 void environ();
-void echo();
+void echo(char** args);
 void help();
 void more();
 void pauseSH();
