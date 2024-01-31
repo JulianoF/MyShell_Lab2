@@ -15,7 +15,7 @@ void environ();
 void echo();
 void help();
 void more();
-void pause();
+void pauseSH();
 
 void execute(struct Command* command, int params);
 

@@ -16,6 +16,7 @@ void shell_loop(); //declare shell_loop function
 void cleanup(); //declare cleanup function
 
 void handle_sigstp(int);
+char** argParse(char*);
 
 int main (){
 
@@ -26,8 +27,14 @@ int main (){
 }
 
 void handle_sigstp(int sig){
-	printf("CTRL-Z detected: Quitting Shell \n");
+	printf("\nCTRL-Z detected: Quitting Shell \n");
 	cleanup(1);
+}
+
+char** argParse(char* args){
+	printf("%s",args);
+	char** parsed_args = {&args};
+	return parsed_args;
 }
 
 void init(){
@@ -38,12 +45,19 @@ void init(){
 }
 
 void shell_loop(){
-	//loop and wiat for user input and envoke command execution pipeline
+	//loop and wait for user input and envoke command execution pipeline
 	while(1){
 		printf("Myshell> ");
+
 		char input[100];
-		scanf("%s",input);
-		if(strcmp(input,"quit") == 0){
+		fgets(input,sizeof(input),stdin);
+		char** args = argParse(input);
+
+		if(strcmp(args[0],"pwd") == 0){
+			commandDict[0].functionptr(NULL);
+		}
+
+		if(strcmp(args[0],"quit") == 0){
 			char* test[] = {"testarg1","testarg2","testarg3",NULL};
 			commandDict[1].functionptr(test);
 			break;

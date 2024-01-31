@@ -2,10 +2,15 @@
 
 #include <string.h>
 #include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
 
 
 void pwd(char** args){
-    printf("this will be pwd\n");
+    char *buffer;
+    buffer=(char *)malloc(100*sizeof(char));
+    getcwd(buffer,100);
+    printf("%s \n",buffer);
 }
 
 void cd(char** args){
@@ -39,7 +44,7 @@ void more(){
 
 }
 
-void pause(){
+void pauseSH(){
 
 }
 
